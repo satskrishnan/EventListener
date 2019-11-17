@@ -23,8 +23,12 @@ import com.digital.core.banking.exception.BookNotFoundException;
 import com.digital.core.banking.model.Book;
 import com.digital.core.banking.repository.BookRepository;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/book")
+@Tag(name = "book", description = "Book Store API")
+
 public class BookController {
 
 	@Autowired
