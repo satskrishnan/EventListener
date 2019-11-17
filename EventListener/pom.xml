@@ -191,8 +191,48 @@
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.openapitools</groupId>
+					<artifactId>openapi-generator-maven-plugin</artifactId>
+					<version>4.2.0</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+							<configuration>
+								<inputSpec>${project.basedir}/src/main/resources/event.yaml</inputSpec>
+								<validateSpec>true</validateSpec>
+								<modelPackage>${project.groupId}.${project.artifactId}.model</modelPackage>
+								<apiPackage>${project.groupId}.${project.artifactId}.api</apiPackage>
+								<generatorName>spring</generatorName>
+								<configOptions>
+									<interfaceOnly>false</interfaceOnly>
+									<delegatePattern>true</delegatePattern>
+									<useBeanValidation>true</useBeanValidation>
+									<performBeanValidation>true</performBeanValidation>
+									<library>spring-boot</library>
+									<dateLibrary>java8</dateLibrary>
+									<hideGenerationTimestamp>true</hideGenerationTimestamp>
+									<title>Event Processing Service</title>
+									<java8>false</java8>
+									<configPackage>${project.groupId}.${project.artifactId}.configuration</configPackage>
+								</configOptions>
+								<generateSupportingFiles>true</generateSupportingFiles>
+								<supportingFilesToGenerate>HomeController.java,OpenAPIDocumentationConfig.java</supportingFilesToGenerate>
+								<generatorName>spring</generatorName>
+								<generateApis>true</generateApis>
+								<generateApiTests>true</generateApiTests>
+								<generateModelTests>true</generateModelTests>
+								<generateModelDocumentation>true</generateModelDocumentation>
+								<generateApiDocumentation>true</generateApiDocumentation>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
+
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
