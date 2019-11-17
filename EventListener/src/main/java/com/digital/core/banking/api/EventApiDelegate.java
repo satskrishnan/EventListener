@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import com.digital.core.banking.model.Events;
 
 /**
- * A delegate to be called by the {@link EventController}}. Implement this
+ * A delegate to be called by the {@link EventApiController}}. Implement this
  * interface with a {@link org.springframework.stereotype.Service} annotated
  * class.
  */
