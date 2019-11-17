@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/event}")
+@RequestMapping("/")
 public class EventApiController implements EventApi {
 
 	private final EventApiDelegate delegate;
