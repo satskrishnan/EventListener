@@ -1,0 +1,61 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: Event Processing Service
+  contact: 
+    email: sathishkr@icloud.com  
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://splunklog.com/event
+tags:
+- name: Events
+  description: Banking Events
+paths:
+  /events:
+    post:
+      summary: Receive Banking Events
+      operationId: receiveEvents
+      tags:
+        - Events
+      requestBody:
+        description: Banking events received from Core
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Events'
+        required: true
+      responses:
+        201:
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    Events:
+      type: object
+      properties:
+        requestId:
+          type: integer
+          format: int64
+        eventData:
+          type: string
+        coreEvent:
+          type: string
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
