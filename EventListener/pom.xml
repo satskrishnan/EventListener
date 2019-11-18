@@ -32,6 +32,10 @@
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
 		<spring-boot.version>2.2.1.RELEASE</spring-boot.version>
 		<springdoc.version>1.2.6</springdoc.version>
+		<openapi-generator-maven-plugin.version>4.1.2</openapi-generator-maven-plugin.version>
+		<openapi-jackson-nullable.version>0.2.0</openapi-jackson-nullable.version>
+		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+
 	</properties>
 
 	<dependencyManagement>
@@ -74,6 +78,21 @@
 			<version>2.6.4</version>
 		</dependency>
 		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>${openapi-jackson-nullable.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox-swagger2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
@@ -86,6 +105,16 @@
 	</dependencies>
 
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -194,9 +223,10 @@
 				<plugin>
 					<groupId>org.openapitools</groupId>
 					<artifactId>openapi-generator-maven-plugin</artifactId>
-					<version>4.2.0</version>
+					<version>${openapi-generator-maven-plugin.version}</version>
 					<executions>
 						<execution>
+							<id>generate-api</id>
 							<goals>
 								<goal>generate</goal>
 							</goals>
@@ -207,6 +237,7 @@
 								<apiPackage>${project.groupId}.${project.artifactId}.api</apiPackage>
 								<generatorName>spring</generatorName>
 								<configOptions>
+									<sourceFolder>src/gen/java/main</sourceFolder>
 									<interfaceOnly>false</interfaceOnly>
 									<delegatePattern>true</delegatePattern>
 									<useBeanValidation>true</useBeanValidation>
@@ -232,7 +263,6 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
