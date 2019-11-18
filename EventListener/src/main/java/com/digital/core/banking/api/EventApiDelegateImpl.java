@@ -15,7 +15,7 @@ public class EventApiDelegateImpl implements EventApiDelegate {
 
 	@Override
 	public ResponseEntity<Void> receiveEvent(Events event) {
-		logger.debug("Receive Core Banking Events: \n {}", event.toString());
+		logger.info("Receive Core Banking Events: \n {}", event.toString());
 		return ResponseEntity.ok().build();
 	}
 
