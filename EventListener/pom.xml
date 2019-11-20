@@ -115,6 +115,7 @@
 				<artifactId>openapi-generator-maven-plugin</artifactId>
 			</plugin>
 		</plugins>  -->
+		<finalName>eventListener</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
