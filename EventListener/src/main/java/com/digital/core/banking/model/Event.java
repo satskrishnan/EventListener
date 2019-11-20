@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-public class Events {
+public class Event {
 
 	@Schema(description = "")
 	private String eventId = null;
@@ -29,7 +29,7 @@ public class Events {
 		this.eventId = eventId;
 	}
 
-	public Events eventId(String eventId) {
+	public Event eventId(String eventId) {
 		this.eventId = eventId;
 		return this;
 	}
@@ -48,7 +48,7 @@ public class Events {
 		this.eventData = eventData;
 	}
 
-	public Events eventData(String eventData) {
+	public Event eventData(String eventData) {
 		this.eventData = eventData;
 		return this;
 	}
@@ -67,7 +67,7 @@ public class Events {
 		this.eventName = eventName;
 	}
 
-	public Events eventName(String eventName) {
+	public Event eventName(String eventName) {
 		this.eventName = eventName;
 		return this;
 	}

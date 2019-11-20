@@ -6,7 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.digital.core.banking.model.Events;
+import com.digital.core.banking.model.Event;
+import com.digital.core.banking.model.EventResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,8 +26,8 @@ public interface EventApi {
 	@Operation(summary = "Receive Events", tags = { "Events" })
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "successful operation") })
 	@PostMapping(value = "/events", consumes = { "application/json" })
-	default ResponseEntity<Void> receiveEvents(
-			@Parameter(description = "Receive Core Banking Events", required = true) @Valid @RequestBody Events events) {
+	default ResponseEntity<EventResponse> receiveEvents(
+			@Parameter(description = "Receive Core Banking Events", required = true) @Valid @RequestBody Event events) {
 		return getDelegate().receiveEvent(events);
 	}
 
