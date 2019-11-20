@@ -31,3 +31,4 @@ build/
 .vscode/
 /logs/
 /bin/
+/keystore.p12
