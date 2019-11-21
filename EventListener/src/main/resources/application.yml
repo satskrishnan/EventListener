@@ -1,12 +1,12 @@
 server:
   servlet:
-    context-path: /
+    context-path: /app
   compression:
     enabled: true
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
     min-response-size: 1024
   http2:
-    enabled: true
+    enabled: false
   port: 7256
   ssl:
     key-store: keystore.p12
@@ -25,10 +25,13 @@ spring:
       strategy:
         content:
           enabled: true
-          paths: /webjars/swagger-ui/**.*
+          paths: /webjars/swagger-ui/**.*  main:    banner-mode: console
 springdoc:
   api-docs:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
-  version: '@springdoc.version@'
+  version: '@project.version@'
+management:  endpoints:    web:      base-path: /      path-mapping:        health: healthcheck  endpoint:    health:      show-details: ALWAYS
+logging:  file:    name: disabled-console.xml  level:    org.springframework: OFF
+    root: OFF
