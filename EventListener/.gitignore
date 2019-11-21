@@ -35,3 +35,4 @@ build/
 /disabled-console.xml
 /LOG_FILE_IS_UNDEFINED
 /springLog
+/springLog.log

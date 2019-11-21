@@ -21,7 +21,6 @@
 		<port>${FLUENTD_PORT}</port>
 		<maxQueueSize>20</maxQueueSize>
 	</appender>
-
 	<appender name="STDOUT"
 		class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -61,22 +60,11 @@
 	<logger name="ch.qos.logback" level="OFF" />
 
 
-
-	<springProfile name="dev">
-		<root level="INFO">
-			<appender-ref ref="STDOUT" />
-			<appender-ref ref="ASYNC" />
-		</root>
-	</springProfile>
-	
-	<springProfile name="prod">
-		<root level="INFO">
-			<appender-ref ref="STDOUT" />
-			<appender-ref ref="ASYNC" />
-			<appender-ref ref="FLUENT" />
-		</root>
-	</springProfile>
-
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="ASYNC" />
+		<appender-ref ref="FLUENT" />
+	</root>
 	<shutdownHook
 		class="ch.qos.logback.core.hook.DelayingShutdownHook" />
 
