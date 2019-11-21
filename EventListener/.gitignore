@@ -33,3 +33,4 @@ build/
 /bin/
 /keystore.p12
 /disabled-console.xml
+/LOG_FILE_IS_UNDEFINED
