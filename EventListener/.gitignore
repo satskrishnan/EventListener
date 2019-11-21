@@ -32,3 +32,4 @@ build/
 /logs/
 /bin/
 /keystore.p12
+/disabled-console.xml
