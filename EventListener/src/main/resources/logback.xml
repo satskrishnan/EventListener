@@ -2,7 +2,7 @@
 <configuration>
 
 	<property name="LOG_PATH" value="./logs"></property>
-	<property name="LOG_FILE" value="springLog"></property>
+	<property name="LOG_FILE" value="springLog.log"></property>
 	<include
 		resource="org/springframework/boot/logging/logback/defaults.xml" />
 	<include
