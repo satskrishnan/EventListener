@@ -16,6 +16,7 @@
 	</appender>
 
 	<property name="LOG_PATH" value="./logs"></property>
+	<property name="LOG_FILE" value="springLog"></property>
 
 
 	<appender name="FILE"
