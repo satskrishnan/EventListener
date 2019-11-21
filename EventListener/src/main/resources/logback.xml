@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="30 seconds">
 
 	<property name="LOG_PATH" value="./logs"></property>
 	<property name="LOG_FILE" value="springLog.log"></property>
@@ -8,6 +8,19 @@
 	<include
 		resource="org/springframework/boot/logging/logback/file-appender.xml" />
 
+	<property name="FLUENTD_HOST" value="localhost" />
+	<property name="FLUENTD_PORT" value="24224" />
+	<springProperty scope="context" name="appName"
+		source="spring.application.name" />
+
+	<appender name="FLUENT"
+		class="ch.qos.logback.more.appenders.DataFluentAppender">
+		<tag>${appName}</tag>
+		<label>eventLog</label>
+		<remoteHost>${FLUENTD_HOST}</remoteHost>
+		<port>${FLUENTD_PORT}</port>
+		<maxQueueSize>20</maxQueueSize>
+	</appender>
 
 	<appender name="STDOUT"
 		class="ch.qos.logback.core.ConsoleAppender">
@@ -48,10 +61,21 @@
 	<logger name="ch.qos.logback" level="OFF" />
 
 
-	<root level="INFO">
-		<appender-ref ref="STDOUT" />
-		<appender-ref ref="ASYNC" />
-	</root>
+
+	<springProfile name="dev">
+		<root level="INFO">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="ASYNC" />
+		</root>
+	</springProfile>
+	
+	<springProfile name="prod">
+		<root level="INFO">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="ASYNC" />
+			<appender-ref ref="FLUENT" />
+		</root>
+	</springProfile>
 
 	<shutdownHook
 		class="ch.qos.logback.core.hook.DelayingShutdownHook" />

@@ -1,37 +1,4 @@
-server:
-  servlet:
-    context-path: /app
-  compression:
-    enabled: true
-    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
-    min-response-size: 1024
-  http2:
-    enabled: false
-  port: 7256
-  ssl:
-    key-store: keystore.p12
-    key-store-password: P!@ssw0rd
-    key-store-type: PKCS12
-    key-alias: event
-spring: 
-  resources: 
-    cache: 
-      period: 31536000
-      cachecontrol:
-        max-age: 31536000
-    chain:
-      html-application-cache: true
-      enabled: true
-      strategy:
-        content:
-          enabled: true
-          paths: /webjars/swagger-ui/**.*  main:    banner-mode: console
-springdoc:
-  api-docs:
-    path: /v3/api-docs
-  swagger-ui:
-    path: /swagger-ui.html
-  version: '@project.version@'
-management:  endpoints:    web:      base-path: /      path-mapping:        health: healthcheck  endpoint:    health:      show-details: ALWAYS
-logging:  file:    name: disabled-console.xml  level:    org.springframework: OFF
-    root: OFF
+spring:
+  application:
+    name: EventProcessing
+  profiles:  - active: dev
