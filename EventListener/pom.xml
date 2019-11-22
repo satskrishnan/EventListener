@@ -40,6 +40,7 @@
 		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
 		<app-version>1.0.0</app-version>
 		<start-class>com.digital.core.banking.EventListenerApplication</start-class>
+		<docker.image.prefix>sathishkr</docker.image.prefix>
 	</properties>
 
 	<dependencyManagement>
@@ -144,6 +145,36 @@
 				<configuration>
 					<mainClass>com.digital.core.banking.EventListenerApplication</mainClass>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.9</version>
+				<configuration>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<!-- <plugin> <groupId>org.openapitools</groupId> <artifactId>openapi-generator-maven-plugin</artifactId> 
 				</plugin> -->
