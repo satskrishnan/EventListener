@@ -17,7 +17,7 @@ public class EventApiDelegateImpl implements EventApiDelegate {
 
 	@Override
 	public ResponseEntity<EventResponse> receiveEvent(Event event) {
-		logger.info("Received Core Banking Events: {}", event.toString());
+		logger.info("Received Core Banking Event: {}", event.toString());
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
