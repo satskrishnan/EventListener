@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /app
+    context-path: /
   compression:
     enabled: true
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
