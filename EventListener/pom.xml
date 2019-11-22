@@ -147,6 +147,7 @@
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<configuration>
 						<executable>true</executable>
+						<mainClass>com.digital.core.banking.EventListenerApplication</mainClass>
 					</configuration>
 					<executions>
 						<execution>
