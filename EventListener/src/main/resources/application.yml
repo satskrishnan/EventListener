@@ -25,27 +25,10 @@ spring:
       strategy:
         content:
           enabled: true
-          paths: /webjars/swagger-ui/**.*  main:    banner-mode: console  application:    name: Event Processing Service  profiles:    active: dev
-springdoc:
+          paths: /webjars/swagger-ui/**.*  main:    banner-mode: console  application:    name: Event Processing Servicespringdoc:
   api-docs:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
   version: '@project.version@'
 management:  endpoints:    web:      base-path: /      path-mapping:        health: healthcheck  endpoint:    health:      show-details: ALWAYS
-      
-      
----
-
-spring:  profiles: dev
-
-logging:  config: classpath:logback-dev.xml
-  
----
-
-spring:
-  profiles: prod
-
-logging:
-  config: classpath:logback-prod.xml
-  

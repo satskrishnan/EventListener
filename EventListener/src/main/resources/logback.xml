@@ -19,7 +19,6 @@
 		<label>eventLog</label>
 		<remoteHost>${FLUENTD_HOST}</remoteHost>
 		<port>${FLUENTD_PORT}</port>
-		<maxQueueSize>20</maxQueueSize>
 	</appender>
 	<appender name="STDOUT"
 		class="ch.qos.logback.core.ConsoleAppender">
@@ -52,6 +51,9 @@
 		class="ch.qos.logback.classic.AsyncAppender">
 		<discardingThreshold>0</discardingThreshold>
 		<queueSize>512</queueSize>
+		<neverBlock>true</neverBlock>
+		<maxFlushTime>10000</maxFlushTime>
+		<!-- <appender-ref ref="FLUENT" />  -->
 		<appender-ref ref="FILE"></appender-ref>
 	</appender>
 
@@ -63,7 +65,6 @@
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="ASYNC" />
-		<appender-ref ref="FLUENT" />
 	</root>
 	<shutdownHook
 		class="ch.qos.logback.core.hook.DelayingShutdownHook" />
@@ -73,7 +74,7 @@
 		<resetJUL>true</resetJUL>
 	</contextListener>
 
-	<statusListener
-		class="ch.qos.logback.core.status.NopStatusListener" />
+	<!-- <statusListener class="ch.qos.logback.core.status.NopStatusListener" 
+		/> -->
 
 </configuration>

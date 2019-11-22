@@ -110,6 +110,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.fluentd</groupId>
+			<artifactId>fluent-logger</artifactId>
+			<version>0.3.4</version>
+		</dependency>
+		<dependency>
 			<groupId>com.sndyuk</groupId>
 			<artifactId>logback-more-appenders</artifactId>
 			<version>1.7.1</version>
@@ -140,10 +145,8 @@
 					<mainClass>com.digital.core.banking.EventListenerApplication</mainClass>
 				</configuration>
 			</plugin>
-			<!-- <plugin>
-				<groupId>org.openapitools</groupId>
-				<artifactId>openapi-generator-maven-plugin</artifactId>
-			</plugin>  -->
+			<!-- <plugin> <groupId>org.openapitools</groupId> <artifactId>openapi-generator-maven-plugin</artifactId> 
+				</plugin> -->
 		</plugins>
 		<finalName>eventListener</finalName>
 		<pluginManagement>
@@ -280,7 +283,6 @@
 			</resource>
 		</resources>
 	</build>
-
 
 	<repositories>
 		<repository>

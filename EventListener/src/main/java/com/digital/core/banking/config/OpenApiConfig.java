@@ -20,11 +20,10 @@ import io.swagger.v3.oas.models.servers.Server;
 public class OpenApiConfig {
 
 	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion,
-			@Value("${spring.profiles.active}") String activeProfile) {
+	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
 
-		final Info info = new Info().version("1.0.0").title("Event Processing Service - " + activeProfile)
-				.version(appVersion).license(new License().name("Apache 2.0"));
+		final Info info = new Info().version("1.0.0").title("Event Processing Service").version(appVersion)
+				.license(new License().name("Apache 2.0"));
 
 		final Contact contact = new Contact().name("Demo Bank").url("https://splunklog.com");
 		info.setContact(contact);
