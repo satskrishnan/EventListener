@@ -109,6 +109,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>com.splunk.logging</groupId>
+			<artifactId>splunk-library-javalogging</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+		<dependency>
 			<groupId>com.sndyuk</groupId>
 			<artifactId>logback-more-appenders</artifactId>
 			<version>1.7.1</version>
@@ -117,6 +122,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.github.danielwegener</groupId>
+			<artifactId>logback-kafka-appender</artifactId>
+			<version>0.2.0-RC2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -264,5 +274,15 @@
 			</resource>
 		</resources>
 	</build>
+
+
+	<repositories>
+		<repository>
+			<id>splunk-artifactory</id>
+			<name>Splunk Releases</name>
+			<url>http://splunk.jfrog.io/splunk/ext-releases-local</url>
+		</repository>
+	</repositories>
+
 
 </project>
