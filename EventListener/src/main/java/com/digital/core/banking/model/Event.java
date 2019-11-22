@@ -75,11 +75,10 @@ public class Event {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Received Event Data {\n");
-
-		sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
-		sb.append("    eventName: ").append(toIndentedString(eventName)).append("\n");
-		sb.append("    eventData: ").append(toIndentedString(eventData)).append("\n");
+		sb.append(" {");
+		sb.append("    eventId: ").append(toIndentedString(eventId)).append(",");
+		sb.append("    eventName: ").append(toIndentedString(eventName)).append(",");
+		sb.append("    eventData: ").append(toIndentedString(eventData)).append(",");
 		sb.append("}");
 		return sb.toString();
 	}
