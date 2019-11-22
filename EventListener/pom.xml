@@ -39,6 +39,7 @@
 		</openapi-jackson-nullable.version>
 		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
 		<app-version>1.0.0</app-version>
+		<start-class>com.digital.core.banking.EventListenerApplication</start-class>
 	</properties>
 
 	<dependencyManagement>
@@ -109,11 +110,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.splunk.logging</groupId>
-			<artifactId>splunk-library-javalogging</artifactId>
-			<version>1.7.3</version>
-		</dependency>
-		<dependency>
 			<groupId>com.sndyuk</groupId>
 			<artifactId>logback-more-appenders</artifactId>
 			<version>1.7.1</version>
@@ -136,9 +132,19 @@
 	</dependencies>
 
 	<build>
-		<!-- <plugins> <plugin> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-maven-plugin</artifactId> 
-			</plugin> <plugin> <groupId>org.openapitools</groupId> <artifactId>openapi-generator-maven-plugin</artifactId> 
-			</plugin> </plugins> -->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.digital.core.banking.EventListenerApplication</mainClass>
+				</configuration>
+			</plugin>
+			<!-- <plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+			</plugin>  -->
+		</plugins>
 		<finalName>eventListener</finalName>
 		<pluginManagement>
 			<plugins>
@@ -146,7 +152,6 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<configuration>
-						<executable>true</executable>
 						<mainClass>com.digital.core.banking.EventListenerApplication</mainClass>
 					</configuration>
 					<executions>
